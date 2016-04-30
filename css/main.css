@@ -1514,7 +1514,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #60811c;
+  background: #60acff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2140,6 +2140,9 @@ a.search-result {
 }
 .site-search form {
   display: none;
+}
+.c-red {
+  color: #f00;
 }
 .throb {
   -webkit-animation: throb 1.33s ease-in-out infinite;
