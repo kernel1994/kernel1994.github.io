@@ -872,8 +872,11 @@ pre .javascript .function {
   position: relative;
 }
 .headband {
-  height: 3px;
-  background: #222;
+  background: url("/images/jupiter.svg") left no-repeat;
+  height: 100px;
+  z-index: 1;
+  position: absolute;
+  width: 100%;
 }
 .site-meta {
   margin: 0;
@@ -1433,7 +1436,6 @@ pre .javascript .function {
   margin: 0 auto;
   max-width: 96px;
   height: auto;
-  border: 2px solid #333;
   padding: 2px;
 }
 .site-author-name {
@@ -1512,7 +1514,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #b87453;
+  background: #60811c;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2138,4 +2140,60 @@ a.search-result {
 }
 .site-search form {
   display: none;
+}
+.throb {
+  -webkit-animation: throb 1.33s ease-in-out infinite;
+  animation: throb 1.33s ease-in-out infinite;
+}
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #222;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+@-moz-keyframes throb {
+  0%, 100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+}
+@-webkit-keyframes throb {
+  0%, 100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+}
+@-o-keyframes throb {
+  0%, 100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+}
+@keyframes throb {
+  0%, 100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
 }
