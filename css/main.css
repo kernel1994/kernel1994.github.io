@@ -874,7 +874,6 @@ pre .javascript .function {
 .headband {
   background: url("/images/jupiter.svg") left no-repeat;
   height: 100px;
-  z-index: 1;
   position: absolute;
   width: 100%;
 }
@@ -1514,7 +1513,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #60acff;
+  background: #55d6ed;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2147,6 +2146,7 @@ a.search-result {
 .throb {
   -webkit-animation: throb 1.33s ease-in-out infinite;
   animation: throb 1.33s ease-in-out infinite;
+  width: 15px;
 }
 ::-webkit-scrollbar {
   width: 16px;
