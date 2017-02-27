@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="lambda 表达式语法123(params) -&amp;gt; expression(params) -&amp;gt; statement(params) -&amp;gt; &amp;#123; statements; &amp;#125;
+方法引用 (method reference)方法引用有三种形式：
+
+objectName::instanceMethod等价于: (arg) -&amp;gt; { objectName.inst">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 8 学习笔记">
+<meta property="og:url" content="http://yoursite.com/2017/02/12/Java-8-学习笔记/index.html">
+<meta property="og:site_name" content="0x00">
+<meta property="og:description" content="lambda 表达式语法123(params) -&amp;gt; expression(params) -&amp;gt; statement(params) -&amp;gt; &amp;#123; statements; &amp;#125;
+方法引用 (method reference)方法引用有三种形式：
+
+objectName::instanceMethod等价于: (arg) -&amp;gt; { objectName.inst">
+<meta property="og:updated_time" content="2017-02-27T13:58:47.066Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java 8 学习笔记">
+<meta name="twitter:description" content="lambda 表达式语法123(params) -&amp;gt; expression(params) -&amp;gt; statement(params) -&amp;gt; &amp;#123; statements; &amp;#125;
+方法引用 (method reference)方法引用有三种形式：
+
+objectName::instanceMethod等价于: (arg) -&amp;gt; { objectName.inst">
+    
+    
+    <!-- title -->
+    <title>Java 8 学习笔记</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="/lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="/lib/jquery/jquery.min.js"></script>
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+      <ul>
+        
+        <li><a class="icon" href="/2017/02/13/Java-泛型学习笔记/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="/2017/01/18/Java-进阶面试问题列表/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+        <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2017/02/12/Java-8-学习笔记/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2017/02/12/Java-8-学习笔记/&text=Java 8 学习笔记"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2017/02/12/Java-8-学习笔记/&title=Java 8 学习笔记"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2017/02/12/Java-8-学习笔记/&is_video=false&description=Java 8 学习笔记"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="mailto:?subject=Java 8 学习笔记&body=Check out this article: http://yoursite.com/2017/02/12/Java-8-学习笔记/"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2017/02/12/Java-8-学习笔记/&title=Java 8 学习笔记"><i class="fa fa-get-pocket" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2017/02/12/Java-8-学习笔记/&title=Java 8 学习笔记"><i class="fa fa-reddit" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2017/02/12/Java-8-学习笔记/&title=Java 8 学习笔记"><i class="fa fa-stumbleupon" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2017/02/12/Java-8-学习笔记/&title=Java 8 学习笔记"><i class="fa fa-digg" aria-hidden="true"></i></a></li>
+        <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2017/02/12/Java-8-学习笔记/&name=Java 8 学习笔记&description="><i class="fa fa-tumblr" aria-hidden="true"></i></a></li>
+      </ul>
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#lambda-表达式"><span class="toc-number">1.</span> <span class="toc-text">lambda 表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#语法"><span class="toc-number">1.1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法引用-method-reference"><span class="toc-number">1.2.</span> <span class="toc-text">方法引用 (method reference)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构造方法引用"><span class="toc-number">1.3.</span> <span class="toc-text">构造方法引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用函数式接口"><span class="toc-number">1.4.</span> <span class="toc-text">常用函数式接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Predicate"><span class="toc-number">1.4.1.</span> <span class="toc-text">Predicate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Consumer"><span class="toc-number">1.4.2.</span> <span class="toc-text">Consumer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Function"><span class="toc-number">1.4.3.</span> <span class="toc-text">Function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Supplier"><span class="toc-number">1.4.4.</span> <span class="toc-text">Supplier</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#流-Stream"><span class="toc-number">2.</span> <span class="toc-text">流 (Stream)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#中间操作"><span class="toc-number">2.1.</span> <span class="toc-text">中间操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#filter"><span class="toc-number">2.1.1.</span> <span class="toc-text">filter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#limit"><span class="toc-number">2.1.2.</span> <span class="toc-text">limit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#skip"><span class="toc-number">2.1.3.</span> <span class="toc-text">skip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#distinct"><span class="toc-number">2.1.4.</span> <span class="toc-text">distinct</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sorted"><span class="toc-number">2.1.5.</span> <span class="toc-text">sorted</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#map"><span class="toc-number">2.1.6.</span> <span class="toc-text">map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flatMap"><span class="toc-number">2.1.7.</span> <span class="toc-text">flatMap</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#终端操作"><span class="toc-number">2.2.</span> <span class="toc-text">终端操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#forEach"><span class="toc-number">2.2.1.</span> <span class="toc-text">forEach</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#collect"><span class="toc-number">2.2.2.</span> <span class="toc-text">collect</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#match"><span class="toc-number">2.2.3.</span> <span class="toc-text">match</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reduce"><span class="toc-number">2.2.4.</span> <span class="toc-text">reduce</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#count"><span class="toc-number">2.2.5.</span> <span class="toc-text">count</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Java 8 学习笔记
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">0x00</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-02-12T04:35:24.000Z" itemprop="datePublished">2017-02-12</time>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Java/">Java</a>, <a class="tag-link" href="/tags/Java-8/">Java 8</a>, <a class="tag-link" href="/tags/Lambda/">Lambda</a>, <a class="tag-link" href="/tags/Stream-API/">Stream API</a>, <a class="tag-link" href="/tags/笔记/">笔记</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="lambda-表达式"><a href="#lambda-表达式" class="headerlink" title="lambda 表达式"></a>lambda 表达式</h1><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(params) -&gt; expression</div><div class="line">(params) -&gt; statement</div><div class="line">(params) -&gt; &#123; statements; &#125;</div></pre></td></tr></table></figure>
+<h2 id="方法引用-method-reference"><a href="#方法引用-method-reference" class="headerlink" title="方法引用 (method reference)"></a>方法引用 (method reference)</h2><p>方法引用有三种形式：</p>
+<ul>
+<li>objectName::instanceMethod<br>等价于: (arg) -&gt; { objectName.instanceMethod(arg); }</li>
+<li>ClassName::staticMethod<br>等价于: (arg) -&gt; { ClassName.staticMethod(arg); }</li>
+<li>ClassName::instanceMethod<br>等价于: (arg0, rest) -&gt; { arg0.instanceMethod(rest); }</li>
+</ul>
+<p>前两种把 lambda 表达式的参数直接当成 instanceMethod | staticMethod 的参数来调用。<br>其中第一种方式中的 objectName 为已经存在的实例变量。<br>例如：</p>
+<ul>
+<li>System.out::println 等同于 x -&gt; System.out.println(x);</li>
+<li>Math::max 等同于 (x, y) -&gt; Math.max(x, y);</li>
+</ul>
+<p>第三种把 lambda 表达式的第一个参数当成 instanceMethod 的目标对象，其他剩余参数当成该方法的参数。<br>例如：</p>
+<ul>
+<li>String::substring 等同于 (str, i) -&gt; str.substring(i);</li>
+</ul>
+<h2 id="构造方法引用"><a href="#构造方法引用" class="headerlink" title="构造方法引用"></a>构造方法引用</h2><p>ClassName::new<br>例如：</p>
+<ul>
+<li>Supplier<apple> c1 = Apple::new; 等同于 Supplier<apple> c1 = () -&gt; new Apple();</apple></apple></li>
+</ul>
+<h2 id="常用函数式接口"><a href="#常用函数式接口" class="headerlink" title="常用函数式接口"></a>常用函数式接口</h2><h3 id="Predicate"><a href="#Predicate" class="headerlink" title="Predicate"></a>Predicate</h3><p>java.util.function.Predicate<t> 接口定义了一个名叫 test 的抽象方法，它接受泛型<br>T 对象，并返回一个 boolean。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@FunctionalInterface</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Predicate</span>&lt;<span class="title">T</span>&gt; </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">test</span><span class="params">(T t)</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 签名</span></div><div class="line">T -&gt; <span class="keyword">boolean</span></div></pre></td></tr></table></figure></t></p>
+<p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** 偶数测试 */</span></div><div class="line">Predicate&lt;Integer&gt; evenIntegerPredicate = n -&gt; n % <span class="number">2</span> == <span class="number">0</span>;</div><div class="line"><span class="comment">// List&lt;Integer&gt; nums 包含 1, 2, 3, 4, 5, 6</span></div><div class="line">nums.stream()</div><div class="line">    .filter(evenIntegerPredicate)</div><div class="line">    .forEach(System.out::println); <span class="comment">// 输出 2, 4, 6</span></div></pre></td></tr></table></figure>
+<h3 id="Consumer"><a href="#Consumer" class="headerlink" title="Consumer"></a>Consumer</h3><p>java.util.function.Consumer<t> 定义了一个名叫 accept 的抽象方法，它接受泛型 T<br>的对象，没有返回值 (void)。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@FunctionalInterface</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Consumer</span>&lt;<span class="title">T</span>&gt; </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">accept</span><span class="params">(T t)</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 签名</span></div><div class="line">T -&gt; <span class="keyword">void</span></div></pre></td></tr></table></figure></t></p>
+<p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** 打印信息 */</span></div><div class="line">Consumer&lt;String&gt; printConsumer = (String s) -&gt; System.out.println(s + <span class="string">"!"</span>);</div><div class="line"><span class="comment">// List&lt;String&gt; strs 包含 "Hello", "world", "!"</span></div><div class="line">strs.stream()</div><div class="line">    .forEach(printConsumer); <span class="comment">// 输出 "Hello!", "world!", "!!"</span></div></pre></td></tr></table></figure>
+<h3 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h3><p>java.util.function.Function<t, r=""> 接口定义了一个叫作 apply 的方法，它接受一个<br>泛型 T 的对象，并返回一个泛型 R 的对象。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@FunctionalInterface</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Function</span>&lt;<span class="title">T</span>, <span class="title">R</span>&gt; </span>&#123;</div><div class="line">    <span class="function">R <span class="title">apply</span><span class="params">(T t)</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 签名</span></div><div class="line">T -&gt; R</div></pre></td></tr></table></figure></t,></p>
+<p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** 字母统计 */</span></div><div class="line"><span class="comment">// 接受字符型，返回其长度(整型)</span></div><div class="line"><span class="comment">// 此 Lambda 表达式亦可用 String::length 方法引用代替</span></div><div class="line">Function&lt;String, Integer&gt; litterCountFunction = (String s) -&gt; s.length();</div><div class="line"><span class="comment">// List&lt;String&gt; strs 包含 "Hello", "world", "!"</span></div><div class="line">strs.stream()</div><div class="line">    .map(litterCountFunction)</div><div class="line">    .forEach(System.out::println); <span class="comment">// 输出 5, 5, 1</span></div></pre></td></tr></table></figure>
+<h3 id="Supplier"><a href="#Supplier" class="headerlink" title="Supplier"></a>Supplier</h3><p>java.util.function.Supplier<t> 定义了一个名叫 get 的抽象方法，它不接受值，返回泛型 T 的对象。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@FunctionalInterface</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Supplier</span>&lt;<span class="title">T</span>&gt; </span>&#123;</div><div class="line">    <span class="function">T <span class="title">get</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 签名</span></div><div class="line"><span class="keyword">void</span> -&gt; T</div></pre></td></tr></table></figure></t></p>
+<p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Supplier&lt;String&gt; productStringSupplier = () -&gt; <span class="string">"Hello, world."</span>;</div><div class="line">System.out.println(productStringSupplier.get()); <span class="comment">// 输出 Hello, world.</span></div></pre></td></tr></table></figure>
+<h1 id="流-Stream"><a href="#流-Stream" class="headerlink" title="流 (Stream)"></a>流 (Stream)</h1><h2 id="中间操作"><a href="#中间操作" class="headerlink" title="中间操作"></a>中间操作</h2><h3 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h3><h3 id="limit"><a href="#limit" class="headerlink" title="limit"></a>limit</h3><h3 id="skip"><a href="#skip" class="headerlink" title="skip"></a>skip</h3><h3 id="distinct"><a href="#distinct" class="headerlink" title="distinct"></a>distinct</h3><h3 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h3><h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><h3 id="flatMap"><a href="#flatMap" class="headerlink" title="flatMap"></a>flatMap</h3><h2 id="终端操作"><a href="#终端操作" class="headerlink" title="终端操作"></a>终端操作</h2><h3 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h3><h3 id="collect"><a href="#collect" class="headerlink" title="collect"></a>collect</h3><h3 id="match"><a href="#match" class="headerlink" title="match"></a>match</h3><h3 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h3><h3 id="count"><a href="#count" class="headerlink" title="count"></a>count</h3>
+  </div>
+</article>
+
+
+
+      </div>
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 0x00
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    <script src="/lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
