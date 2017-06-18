@@ -444,7 +444,7 @@ body {
   color: #c9cacc;
   background-color: #1d1f21;
   font-size: 14px;
-  font-family: "Menlo", "Meslo LG", monospace;
+  font-family: "Menlo", "Meslo LG", "Microsoft YaHei", monospace;
   font-weight: 400;
   line-height: 1.725;
   text-rendering: geometricPrecision;
