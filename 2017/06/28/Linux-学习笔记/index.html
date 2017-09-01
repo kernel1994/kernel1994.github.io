@@ -24,7 +24,7 @@
 设置用户初始组：usermod -g GROUP LOGIN
 将用户[添加]进组：usermod [-a] -G GROUP1[,GROUP2,…[,GROUPN]]] LOGIN
 修改用户名同时修">
-<meta property="og:updated_time" content="2017-06-29T15:24:48.722Z">
+<meta property="og:updated_time" content="2017-09-01T11:38:03.774Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux 学习笔记">
 <meta name="twitter:description" content="Linux文件与目录用户与组用户管理
@@ -73,9 +73,11 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/about/">About</a></li>
-         
           <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/friends/">Friends</a></li>
+         
+          <li><a href="/about/">About</a></li>
         
       </ul>
     </span>
@@ -84,10 +86,10 @@
       <ul>
         
         
-        <li><a class="icon" href="/2017/06/24/Numpy-学习笔记/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        <li><a class="icon" href="/2017/06/24/Numpy-学习笔记/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
-        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
-        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
       <span id="i-prev" class="info" style="display:none;">Previous post</span>
       <span id="i-next" class="info" style="display:none;">Next post</span>
@@ -156,11 +158,13 @@
 <li>修改用户说明：usermod -c COMMENT LOGIN</li>
 <li>设置用户初始组：usermod -g GROUP LOGIN</li>
 <li>将用户[添加]进组：usermod [-a] -G GROUP1[,GROUP2,…[,GROUPN]]] LOGIN</li>
-<li>修改用户名同时修改 home 目录名：usermod -l NEW_LOGIN -d HOME_DIR -m LOGIN（-m 命令表示移动原来 home 目录的内容到新 home 目录中）<h3 id="组管理"><a href="#组管理" class="headerlink" title="组管理"></a>组管理</h3></li>
+<li>修改用户名同时修改 home 目录名：usermod -l NEW_LOGIN -d HOME_DIR -m LOGIN（-m 命令表示移动原来 home 目录的内容到新 home 目录中）</li>
 </ul>
 </li>
+</ul>
+<h3 id="组管理"><a href="#组管理" class="headerlink" title="组管理"></a>组管理</h3><ul>
 <li>新建组：groupadd GROUP</li>
-<li>将多个用户加入到组：gpasswd -M USER1[,USER2,…[,USERN]]] GROUP<br>-</li>
+<li>将多个用户加入到组：gpasswd -M USER1[,USER2,…[,USERN]]] GROUP</li>
 </ul>
 <h2 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h2><h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><h2 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h2><h2 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h2><h2 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h2><h2 id="更新内核"><a href="#更新内核" class="headerlink" title="更新内核"></a>更新内核</h2><h2 id="网络管理"><a href="#网络管理" class="headerlink" title="网络管理"></a>网络管理</h2><h2 id="磁盘与文件系统"><a href="#磁盘与文件系统" class="headerlink" title="磁盘与文件系统"></a>磁盘与文件系统</h2>
   </div>
@@ -178,9 +182,11 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/about/">About</a></li>
-         
           <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/friends/">Friends</a></li>
+         
+          <li><a href="/about/">About</a></li>
         
       </ul>
     </div>
@@ -207,10 +213,10 @@
 
     <div id="actions-footer">
       <ul>
-        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
-        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="toc"><a class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
         <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
-        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+        <li id="menu"><a class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
       </ul>
     </div>
 
@@ -228,9 +234,11 @@
          
           <li><a href="/">Home</a></li>
          
-          <li><a href="/about/">About</a></li>
-         
           <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/friends/">Friends</a></li>
+         
+          <li><a href="/about/">About</a></li>
         
       </ul>
     </nav>
