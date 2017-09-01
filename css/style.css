@@ -454,6 +454,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
+.baimu {
+  background-color: #fff !important;
+  color: #fff !important;
+}
+.heimu {
+  background-color: #000 !important;
+  color: #000 !important;
+}
+.post>.content>p {
+  text-indent: 2em;
+  line-height: 2em;
+}
 .content {
   flex: 1;
 }
@@ -650,7 +662,7 @@ body {
 #header-post {
   position: fixed;
   top: 2rem;
-  right: 2rem;
+  right: 0;
   display: inline-block;
   float: right;
 }
@@ -685,6 +697,7 @@ body {
 #header-post #menu-icon {
   float: right;
   margin-left: 15px;
+  margin-right: 2rem;
 }
 #header-post #menu-icon:hover {
   color: #2bbc8a;
@@ -692,12 +705,14 @@ body {
 #header-post #menu-icon-tablet {
   float: right;
   margin-left: 15px;
+  margin-right: 2rem;
 }
 #header-post #menu-icon-tablet:hover {
   color: #2bbc8a;
 }
 #header-post #top-icon-tablet {
   margin-left: 15px;
+  margin-right: 2rem;
   bottom: 2rem;
   right: 2rem;
   position: fixed;
@@ -710,6 +725,7 @@ body {
 }
 #header-post #menu {
   visibility: hidden;
+  margin-right: 2rem;
 }
 #header-post #nav {
   letter-spacing: 0.01em;
@@ -744,6 +760,7 @@ body {
 #header-post #actions {
   float: right;
   margin-top: 2rem;
+  margin-right: 2rem;
   width: 100%;
   text-align: right;
 }
@@ -766,9 +783,12 @@ body {
 #header-post #toc {
   clear: both;
   text-align: right;
-  padding-top: 1rem;
+  margin-top: 1rem;
+  padding-right: 2rem;
   max-width: 20em;
   float: right;
+  overflow: auto;
+  max-height: calc(95vh - 7rem);
 }
 #header-post #toc a:hover {
   color: #d480aa;
@@ -1383,6 +1403,7 @@ pre code {
 }
 .highlight td.gutter {
   text-align: right;
-  padding-right: 20px;
-  display: none;
+}
+.highlight .line {
+  height: 22px;
 }
