@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>你是吃可爱多长大的吧？</title>
+  <style type="text/css">
+    body {
+        display: block;
+        margin: 0;
+    }
+    .btn-gradient {
+        text-decoration: none;
+        color: white;
+        padding: 10px 30px;
+        display: inline-block;
+        position: relative;
+        border: 1px solid rgba(0,0,0,0.21);
+        border-bottom: 4px solid rgba(0,0,0,0.21);
+        border-radius: 4px;
+        text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+    }
+    .btn-gradient.orange {
+        background: rgba(255,105,30,1);
+    }
+    .btn-gradient.red {
+        background: rgba(250,90,90,1);
+    }
+    #outside {
+      z-index: 1;
+      position: absolute;
+      background-color: lightgreen;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: 1.2s;
+      transform-origin: 0;
+    }
+
+    .open-card {
+      transform: rotateY(90deg);
+    }
+
+    #outside-title {
+      color: black;
+      padding: 4px;
+      font-family: Arial;
+      font-size: 15pt;
+      text-align: center;
+    }
+
+    #outside-pic {
+      width: 300px;
+      height: 150px;
+    }
+
+    #outside-help {
+      color: black;
+      font-family: Arial;
+      font-size: 15pt;
+      text-align: center;
+      padding: 20px;
+    }
+
+    #inside {
+      z-index: 0;
+      position: absolute;
+      background-color: lightyellow;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+    }
+
+    #inside-title {
+      color: black;
+      font-family: Courier;
+      font-size: 25pt;
+      text-align: center;
+    }
+
+    #inside-pic {
+      width: 155px;
+      height: 153px;
+    }
+
+    #message {
+      color: black;
+      font-family: Courier;
+      font-size: 15pt;
+      text-align: center;
+    }
+
+    button {
+      background: silver;
+    }
+  </style>
+</head>
+<body>
+  <div id="outside">
+    <p id="outside-title">祝我们的年仅16岁的\青春无敌的\美貌与智慧并存的\眉清目秀的\傻得可爱的紫嫣生日快乐！<br/>🎈🎂🎉🎈🎂🎉</p>
+
+      <img id="outside-pic" src="rainbow.png">
+      <p>
+        <button class="btn-gradient orange" onclick="open_card()">点开有惊喜</button>
+      </p>
+  </div>
+
+  <div id="inside">
+    <p id="inside-title">并没有惊喜</p>
+
+        <img id="inside-pic" src="6.jpg">
+
+        <p id="message">就是喊你请我吃饭哈哈哈哈<br>快说个时间吧</p>
+
+        <p>
+          <button class="btn-gradient red" onclick="close_card()">狠心关闭惊喜</button>
+        </p>
+  </div>
+
+  <script type="text/javascript">
+    function open_card() {
+      document.getElementById('outside').className = 'open-card';
+    }
+
+    function close_card() {
+      document.getElementById('outside').className = '';
+    }
+  </script>
+</body>
+</html>
