@@ -33,7 +33,7 @@
       width: 100%;
       height: 100%;
       text-align: center;
-      transition: 1.2s;
+      transition: 1.8s;
       transform-origin: 0;
     }
 
@@ -120,10 +120,12 @@
   <script type="text/javascript">
     function open_card() {
       document.getElementById('outside').className = 'open-card';
+      document.getElementById('inside-pic').src = '6.jpg';
     }
 
     function close_card() {
       document.getElementById('outside').className = '';
+      document.getElementById('inside-pic').src = '7.jpg';
     }
   </script>
 </body>
