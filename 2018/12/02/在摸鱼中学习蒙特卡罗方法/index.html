@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="引言最近一道小学六年级的几何题在煎蛋上掀起了一波摸鱼浪潮，我一看确实是一道小学题，因为用定积分一下就算出来了，too simple。但是我小学毕业太久了，都忘记如何积分了//误。所以趁此机会学习一下用蒙特卡罗方法(Monte Carlo Method)来解此题。 概述蒙特卡罗方法诞生于上个世纪40年代美国的”曼哈顿计划”，名字来源于赌城蒙特卡罗，象征概率。P.S. 还有一种随机方法叫拉斯维加斯方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在摸鱼中学习蒙特卡罗方法">
+<meta property="og:url" content="http://yoursite.com/2018/12/02/在摸鱼中学习蒙特卡罗方法/index.html">
+<meta property="og:site_name" content="no thanks">
+<meta property="og:description" content="引言最近一道小学六年级的几何题在煎蛋上掀起了一波摸鱼浪潮，我一看确实是一道小学题，因为用定积分一下就算出来了，too simple。但是我小学毕业太久了，都忘记如何积分了//误。所以趁此机会学习一下用蒙特卡罗方法(Monte Carlo Method)来解此题。 概述蒙特卡罗方法诞生于上个世纪40年代美国的”曼哈顿计划”，名字来源于赌城蒙特卡罗，象征概率。P.S. 还有一种随机方法叫拉斯维加斯方法">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/images/circle.jpg">
+<meta property="og:image" content="http://yoursite.com/images/circle_formula.jpg">
+<meta property="og:image" content="http://yoursite.com/images/circle_point.jpg">
+<meta property="og:image" content="http://yoursite.com/images/problem.jpg">
+<meta property="og:updated_time" content="2018-12-02T12:43:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在摸鱼中学习蒙特卡罗方法">
+<meta name="twitter:description" content="引言最近一道小学六年级的几何题在煎蛋上掀起了一波摸鱼浪潮，我一看确实是一道小学题，因为用定积分一下就算出来了，too simple。但是我小学毕业太久了，都忘记如何积分了//误。所以趁此机会学习一下用蒙特卡罗方法(Monte Carlo Method)来解此题。 概述蒙特卡罗方法诞生于上个世纪40年代美国的”曼哈顿计划”，名字来源于赌城蒙特卡罗，象征概率。P.S. 还有一种随机方法叫拉斯维加斯方法">
+<meta name="twitter:image" content="http://yoursite.com/images/circle.jpg">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>在摸鱼中学习蒙特卡罗方法</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writings</a></li>
+         
+          <li><a href="/friends/">Friends</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2016/12/27/考研碎片/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/12/02/在摸鱼中学习蒙特卡罗方法/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/12/02/在摸鱼中学习蒙特卡罗方法/&text=在摸鱼中学习蒙特卡罗方法"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/12/02/在摸鱼中学习蒙特卡罗方法/&title=在摸鱼中学习蒙特卡罗方法"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/12/02/在摸鱼中学习蒙特卡罗方法/&is_video=false&description=在摸鱼中学习蒙特卡罗方法"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=在摸鱼中学习蒙特卡罗方法&body=Check out this article: http://yoursite.com/2018/12/02/在摸鱼中学习蒙特卡罗方法/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/12/02/在摸鱼中学习蒙特卡罗方法/&title=在摸鱼中学习蒙特卡罗方法"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/12/02/在摸鱼中学习蒙特卡罗方法/&title=在摸鱼中学习蒙特卡罗方法"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/12/02/在摸鱼中学习蒙特卡罗方法/&title=在摸鱼中学习蒙特卡罗方法"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/12/02/在摸鱼中学习蒙特卡罗方法/&title=在摸鱼中学习蒙特卡罗方法"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/12/02/在摸鱼中学习蒙特卡罗方法/&name=在摸鱼中学习蒙特卡罗方法&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">2.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hello-World"><span class="toc-number">3.</span> <span class="toc-text">Hello World</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题"><span class="toc-number">4.</span> <span class="toc-text">解题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结与展望"><span class="toc-number">5.</span> <span class="toc-text">总结与展望</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">6.</span> <span class="toc-text">References</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index my4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        在摸鱼中学习蒙特卡罗方法
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span itemprop="name">no thanks</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2018-12-02T07:09:58.000Z" itemprop="datePublished">2018-12-02</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>最近一道小学六年级的几何题在煎蛋上掀起了一波摸鱼浪潮，我一看确实是一道小学题，因为用定积分一下就算出来了，too simple。但是我小学毕业太久了，都忘记如何积分了//误。<br>所以趁此机会学习一下用<a href="https://en.wikipedia.org/wiki/Monte_Carlo_method" target="_blank" rel="noopener">蒙特卡罗方法</a>(Monte Carlo Method)来解此题。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>蒙特卡罗方法诞生于上个世纪40年代美国的”曼哈顿计划”，名字来源于赌城蒙特卡罗，象征概率。<br>P.S. 还有一种随机方法叫<a href="https://en.wikipedia.org/wiki/Las_Vegas_algorithm" target="_blank" rel="noopener">拉斯维加斯方法</a>，同样名自另一座赌城拉斯维加斯。</p>
+<p>蒙特卡罗方法是一种计算方法。原理是通过大量随机样本，去了解一个系统，进而得到所要计算的值。<br>它非常强大和灵活，又相当简单易懂，很容易实现。对于许多问题来说，它往往是最简单的计算方法，有时甚至是唯一可行的方法。</p>
+<h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><p>第一个例子我们来看看如何使用蒙特卡罗方法来估算 <code>π</code> 的值。</p>
+<p><img src="/images/circle.jpg" width="300px" alt="估计 π"><br><img src="/images/circle_formula.jpg" alt="面积公式"><br>正方形内部有一个相切的圆，它们的面积之比是 <code>π/4</code>。</p>
+<p><img src="/images/circle_point.jpg" width="250px" alt="随机点"><br>现在，在这个正方形内部，随机产生 10000 个点（即 10000 个坐标对 (x, y)），计算它们与中心点的距离，从而判断是否落在圆的内部。</p>
+<p>如果这些点均匀分布，那么圆内的点应该占到所有点的 <code>π/4</code>，因此将这个比值乘以 <code>4</code>，就是 <code>π</code> 的值。</p>
+<p>下面是 Python 实现。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">r = <span class="number">1</span>  <span class="comment"># radius</span></span><br><span class="line">n_all = <span class="number">10000</span>  <span class="comment"># number of random samples</span></span><br><span class="line">n_in = <span class="number">0</span>  <span class="comment"># number of points in circle</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(n_all):</span><br><span class="line">    x = random.uniform(-r, r)</span><br><span class="line">    y = random.uniform(-r, r)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Euclidean distance, center = (0, 0)</span></span><br><span class="line">    distance = math.sqrt(math.pow(x, <span class="number">2</span>) + math.pow(y, <span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> distance &lt; r:</span><br><span class="line">        n_in += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">pi = (n_in / n_all) * <span class="number">4</span></span><br><span class="line">print(pi)</span><br></pre></td></tr></table></figure></p>
+<p>输出 <code>3.14187</code></p>
+<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p><img src="/images/problem.jpg" width="350px" alt="小学六年级的几何题"><br>开始解题，不要慌，先暗中观察一番：整个图为宽 <code>8</code> 高 <code>4</code> 的矩形，阴影存在于直线下和圆外左下。</p>
+<p>首先以左下角为原点，建立坐标系。圆心在 <code>(4, 4)</code>，半径 <code>r = 4</code>。</p>
+<p>然后写出直线方程: <code>y = 1/2 * x</code> =&gt; 在直线下面则: <code>y &lt; 1/2 * x</code></p>
+<p>再写出在圆外方程: <code>sqrt((x - 4) ^ 2 + (y - 4) ^ 2) &gt; r</code></p>
+<p>此外阴影还需满足: <code>x &lt; 4</code></p>
+<p>Python 实现如下。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">r = <span class="number">4</span>  <span class="comment"># radius</span></span><br><span class="line">w = <span class="number">8</span>  <span class="comment"># width</span></span><br><span class="line">h = <span class="number">4</span>  <span class="comment"># height</span></span><br><span class="line"></span><br><span class="line">n_all = <span class="number">10000</span>  <span class="comment"># number of random samples</span></span><br><span class="line">n_in = <span class="number">0</span>  <span class="comment"># number of points in shadow</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> range(n_all):</span><br><span class="line">    x = random.uniform(<span class="number">0</span>, w)</span><br><span class="line">    y = random.uniform(<span class="number">0</span>, h)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> x &lt; <span class="number">4</span> <span class="keyword">and</span> \</span><br><span class="line">       y &lt; <span class="number">0.5</span> * x <span class="keyword">and</span> \</span><br><span class="line">       math.sqrt(math.pow(x - <span class="number">4</span>, <span class="number">2</span>) + math.pow(y - <span class="number">4</span>, <span class="number">2</span>)) &gt; r:</span><br><span class="line">       n_in += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">area = (n_in / n_all) * (w * h)</span><br><span class="line">print(area)</span><br></pre></td></tr></table></figure></p>
+<p>输出 <code>1.2544</code></p>
+<h2 id="总结与展望"><a href="#总结与展望" class="headerlink" title="总结与展望"></a>总结与展望</h2><p>蒙特卡罗算法并不是一种算法的名称，而是对一类随机算法的特性的概括，它指的是时间复杂度固定，然而结果有一定几率失败，而采样越多，越近似最优解的算法。<br>此题还可以使用<a href="https://en.wikipedia.org/wiki/Riemann_sum" target="_blank" rel="noopener">矩形法</a>或<a href="https://en.wikipedia.org/wiki/Trapezoidal_rule" target="_blank" rel="noopener">梯形法</a>来实现定积分的逼近，编程实现也非常简单//逃。</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="http://www.ruanyifeng.com/blog/2015/07/monte-carlo-method.html" target="_blank" rel="noopener">阮一峰 - 蒙特卡罗方法入门</a></li>
+<li><a href="https://docs.python.org/3/library/random.html#random.uniform" target="_blank" rel="noopener">random - Generate pseudo-random numbers</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Monte_Carlo_method" target="_blank" rel="noopener">wiki - Monte Carlo method</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Riemann_sum" target="_blank" rel="noopener">wiki - Riemann sum</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Trapezoidal_rule" target="_blank" rel="noopener">wiki - Trapezoidal rule</a></li>
+</ul>
+
+  </div>
+</article>
+
+
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writings</a></li>
+         
+          <li><a href="/friends/">Friends</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">2.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hello-World"><span class="toc-number">3.</span> <span class="toc-text">Hello World</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题"><span class="toc-number">4.</span> <span class="toc-text">解题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结与展望"><span class="toc-number">5.</span> <span class="toc-text">总结与展望</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">6.</span> <span class="toc-text">References</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2018/12/02/在摸鱼中学习蒙特卡罗方法/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2018/12/02/在摸鱼中学习蒙特卡罗方法/&text=在摸鱼中学习蒙特卡罗方法"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2018/12/02/在摸鱼中学习蒙特卡罗方法/&title=在摸鱼中学习蒙特卡罗方法"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2018/12/02/在摸鱼中学习蒙特卡罗方法/&is_video=false&description=在摸鱼中学习蒙特卡罗方法"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=在摸鱼中学习蒙特卡罗方法&body=Check out this article: http://yoursite.com/2018/12/02/在摸鱼中学习蒙特卡罗方法/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2018/12/02/在摸鱼中学习蒙特卡罗方法/&title=在摸鱼中学习蒙特卡罗方法"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2018/12/02/在摸鱼中学习蒙特卡罗方法/&title=在摸鱼中学习蒙特卡罗方法"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2018/12/02/在摸鱼中学习蒙特卡罗方法/&title=在摸鱼中学习蒙特卡罗方法"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2018/12/02/在摸鱼中学习蒙特卡罗方法/&title=在摸鱼中学习蒙特卡罗方法"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2018/12/02/在摸鱼中学习蒙特卡罗方法/&name=在摸鱼中学习蒙特卡罗方法&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 kernel1994
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writings</a></li>
+         
+          <li><a href="/friends/">Friends</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+<!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+<!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
